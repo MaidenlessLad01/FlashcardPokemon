@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:MVVM="clr-namespace:FlashcardPokemon.MVVM.ViewModels"
+             x:Class="MauiApp9.MVVM.Views.FlashcardView"
+             Title="FlashcardView">
+
+    <ContentPage.BindingContext>
+        <MVVM:FlashcardViewModel />
+    </ContentPage.BindingContext>
+    <Grid Padding="0" Margin="0" >
+        
+        <Image Source="blankbg.jpg" Margin="0" Aspect="Fill"></Image>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".1*"/>
+                <ColumnDefinition Width=".4*"/>
+                <ColumnDefinition Width=".6*"/>
+            </Grid.ColumnDefinitions>
+        
+            <Grid Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                <VerticalStackLayout>
+                    <Label Text="{Binding CurrentPokemon.Name}"
+                           Padding="0,0,0,0"
+                           VerticalTextAlignment="Start"
+                           HorizontalTextAlignment="Center"/>
+                <Image Source="{Binding Answer}" MaximumHeightRequest="200" Margin="35,0,0,0"></Image>
+                </VerticalStackLayout>
+                
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <VerticalStackLayout MaximumWidthRequest="200" Spacing="15" Margin="0,0,25,30" VerticalOptions="Center">
+                    <Button Text="{Binding CurrentPokemon.Choices[0]}" 
+                            Command="{Binding SelectPokemonCommand}"
+                            CommandParameter="{Binding CurrentPokemon.Choices[0]}"
+                            BorderColor="RoyalBlue"
+                            BorderWidth="3"
+                            TextColor="Yellow"
+                            TextTransform="Uppercase"
+                            BackgroundColor="#4C0000FF"
+                            FontFamily="Solid">
+                    </Button>
+                    <Button Text="{Binding CurrentPokemon.Choices[1]}" 
+                            Command="{Binding SelectPokemonCommand}"
+                            CommandParameter="{Binding CurrentPokemon.Choices[1]}"
+                            BorderColor="RoyalBlue"
+                            BorderWidth="3"
+                            TextColor="Yellow"
+                            TextTransform="Uppercase"
+                            BackgroundColor="#590000FF"
+                            FontFamily="Solid">
+                    </Button>
+                    <Button Text="{Binding CurrentPokemon.Choices[2]}" 
+                            Command="{Binding SelectPokemonCommand}"
+                            CommandParameter="{Binding CurrentPokemon.Choices[2]}" 
+                            BorderColor="RoyalBlue"
+                            BorderWidth="3"
+                            TextColor="Yellow"
+                            TextTransform="Uppercase"
+                            BackgroundColor="#590000FF"
+                            FontFamily="Solid">
+                    </Button>
+                    <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+                        <Button WidthRequest="80"
+                                Text="SHOW"
+                                TextColor="Yellow"
+                                BorderColor="RoyalBlue"
+                                BorderWidth="3"
+                                BackgroundColor="#590000FF"
+                                FontFamily="Solid"></Button>
+                        <Button WidthRequest="80"
+                                BorderColor="RoyalBlue"
+                                Text="NEXT"
+                                BorderWidth="3"
+                                TextColor="Yellow"
+                                BackgroundColor="#590000FF"
+                                FontFamily="Solid"></Button>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>
