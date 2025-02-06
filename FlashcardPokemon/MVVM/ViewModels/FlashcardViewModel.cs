@@ -50,7 +50,9 @@ namespace FlashcardPokemon.MVVM.ViewModels
                 new FlashcardModel { Name = "Chimchar", TintedImage = "chimchar.png" , NormalImage = "nobgtintchimchar.png"},
                 new FlashcardModel { Name = "Mew", TintedImage = "mew.png" , NormalImage = "nobgtintmew.png"},
                 new FlashcardModel { Name = "Jigglypuff", TintedImage = "jigglypuff.png" , NormalImage = "nobgjigglypuff.png" },
-                // Add more Pokémon
+                new FlashcardModel { Name = "Haunter", TintedImage = "haunter.png" , NormalImage = "nobgtinthaunter.png" },
+                new FlashcardModel { Name = "Jigglypuff", TintedImage = "squirtle.png" , NormalImage = "nobgtintsquirtle.png" }
+
             };
 
             SelectPokemonCommand = new Command<string>(OnPokemonSelected);
@@ -90,11 +92,12 @@ namespace FlashcardPokemon.MVVM.ViewModels
                 // Correct answer logic
                 Answer = CurrentPokemon.TintedImage;
                 await Task.Delay(1000);
-                RandomizePokemon();        
+                RandomizePokemon(); 
+               
             }
             else
             {
-                // Incorrect answer logic
+                RandomizePokemon();
             }
         }
        
